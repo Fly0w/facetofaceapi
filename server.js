@@ -23,7 +23,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {res.send("Salut les reufs !")})
+app.get('/', (req, res) => {res.send("Salut les reufs !")}) 
 
 // profile/:id
 app.get('/profile/:id', (req, res) => {idHandler(req, res, db)})
