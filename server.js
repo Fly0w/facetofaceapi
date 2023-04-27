@@ -11,7 +11,7 @@ import { idHandler } from './controllers/id.js';
 const db = knex({
     client: 'pg',
     connection: {
-     host : '127.0.0.1',
+     host : 'postgresql-animated-83542',
      port : 5432,
      user : 'postgres',
      password : 'test',
