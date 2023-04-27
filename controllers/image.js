@@ -1,5 +1,5 @@
 const imageurlHandler = (req, res) => {
-    const PAT = 'c5c849813a704cb1adf367b6c587d0f7';
+    const PAT = process.env.API_CLARIFAI;
     const USER_ID = 'flucariodu62';       
     const APP_ID = 'face2face';
     const MODEL_ID = 'face-detection';  
