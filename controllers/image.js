@@ -35,6 +35,9 @@ const imageurlHandler = (req, res) => {
         .catch(err => res.status("400").json("error while loading the url"))
 }
 
+
+// Function that takes the user ID in the body of the request, fins the user in the db and
+// increments by 1 his/her number or entries
 const imageHandler = (req, res, db) => {
     const { id } = req.body;
     db('users')

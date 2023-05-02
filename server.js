@@ -42,3 +42,6 @@ app.post('/register', (req,res) => {registerHandler(req, res, bcrypt, db)})
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {console.log(`app is running on port ${PORT}`);})
+
+// const PORT = 3001;
+// app.listen(PORT, () => {console.log(`app is running on port ${PORT}`);})

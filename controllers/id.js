@@ -1,3 +1,5 @@
+// Returns an array with all the information about one user according to the id provided in the
+// request.
 export const idHandler = (req, res, db) => {
     const { id } = req.params;
     db.select('*').from('users')

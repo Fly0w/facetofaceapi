@@ -1,3 +1,6 @@
+// Function that takes the email and password inside the body of the request, checks if the user
+// exists, and if yes, checks if the password matches the hash inside the user database.
+// If everything is good, gives a response as an array with the user's information
 export const signinHandler = (req, res, bcrypt, db) => {
     const { email, password } = req.body;
     if (!email || !password) {
