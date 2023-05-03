@@ -1,5 +1,5 @@
-// Returns an array with all the information about one user according to the id provided in the
-// request.
+// Function that returns an array with all the information about one user, as an object,
+// according to the id provided in the request body.
 export const idHandler = (req, res, db) => {
     const { id } = req.params;
     db.select('*').from('users')

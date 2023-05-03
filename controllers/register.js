@@ -1,14 +1,29 @@
-// Function that creates a new user in the "login" database after checking if there is no empty input.
-// If no empty input, creates a hash for the user's password, and add the email et hashed password in
-// the "login" db. Then, also creates a new user in the "user" database with name, email, and date.
+// Function that creates a new user in the "login" database after checking if there is no 
+// empty input and if the password and email are in a good format. If no problem, creates
+// a hash for the user's password, and add the email and hashed password in the "login"  
+// db. Then, also creates a new user in the "user" database with name, email, and date.
 export const registerHandler = (req, res, bcrypt, db) => {
     const dateObj = new Date();
     const formattedDate = dateObj.toLocaleDateString();
 
     const { email, password, name }= req.body;
 
+    const specialCharRegex = /[ !@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]/;
+    const numberRegex = /(?=.*?[0-9])/;
+    const caseRegex = /^(?=.*[a-z])(?=.*[A-Z])/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    
+    const hasSpecialChar = specialCharRegex.test(password);
+    const hasNumber = numberRegex.test(password);
+    const hasCase = caseRegex.test(password);
+    const isLongEnough = (password.length >= 6 && password.length <= 64);
+    const emailValid = emailRegex.test(email);
+
     if (!email || !password || !name) {
-        return res.status(400).json("incorrect form submission")
+        return res.status(400).json("Please fill in the form")
+    } else if (!hasSpecialChar || !hasNumber || !hasCase || !isLongEnough || !emailValid){
+        return res.status(400).json("Email or password invalid")
     }
     const hash = bcrypt.hashSync(password, 10);
     db.transaction(trx => {

@@ -1,3 +1,5 @@
+// Function that takes care of sending a request to the Clarifai API with our credentials
+// and returns the object to our app
 const imageurlHandler = (req, res) => {
     const PAT = process.env.API_CLARIFAI;
     const USER_ID = 'flucariodu62';       
@@ -36,8 +38,8 @@ const imageurlHandler = (req, res) => {
 }
 
 
-// Function that takes the user ID in the body of the request, fins the user in the db and
-// increments by 1 his/her number or entries
+// Function that takes the user ID in the body of the request, finds the user in the db 
+// and increments by 1 his/her number or entries
 const imageHandler = (req, res, db) => {
     const { id } = req.body;
     db('users')
@@ -53,9 +55,8 @@ const imageHandler = (req, res, db) => {
 };
 
 
-
-// Function that updates the last loaded url in the database, and returns a response with
-// the new url
+// Function that takes the id and last_url from the request body, updates the last loaded 
+// url in the database, and returns a response with the new url to our App
 const imageLastUrl = (req, res, db) => {
   const { id, last_url } = req.body;
   db('users')
@@ -82,7 +83,6 @@ const imageLastUrl = (req, res, db) => {
       res.status(500).send('error  while processing url');
     });
 };
-
 
 
 export { imageHandler, imageurlHandler, imageLastUrl };
