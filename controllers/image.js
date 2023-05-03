@@ -52,4 +52,37 @@ const imageHandler = (req, res, db) => {
         })
 };
 
-export { imageHandler, imageurlHandler };
+
+
+// Function that updates the last loaded url in the database, and returns a response with
+// the new url
+const imageLastUrl = (req, res, db) => {
+  const { id, last_url } = req.body;
+  db('users')
+    .where({id})
+    .select('last_url')
+    .then(url => {
+      if (!url) {
+        return res.status(404).send('Url not found');
+      }
+      db('users')
+        .where({id})
+        .update({last_url})
+        .returning('last_url')
+        .then((url) => {
+          res.json(url[0].last_url);
+        })
+        .catch(error => {
+          console.error(error);
+          res.status(500).send('error 1 while processing url');
+        });
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('error  while processing url');
+    });
+};
+
+
+
+export { imageHandler, imageurlHandler, imageLastUrl };

@@ -3,8 +3,7 @@
 // the "login" db. Then, also creates a new user in the "user" database with name, email, and date.
 export const registerHandler = (req, res, bcrypt, db) => {
     const dateObj = new Date();
-    const options = { month: '2-digit', day: '2-digit', year: 'numeric' };
-    const formattedDate = dateObj.toLocaleDateString('ja-JP', options);
+    const formattedDate = dateObj.toLocaleDateString();
 
     const { email, password, name }= req.body;
 
