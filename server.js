@@ -21,6 +21,15 @@ import { checkExistingEmail, resetPassword } from './controllers/forgotPassword.
   });
 
 
+  // const db = knex({
+  //   client: 'pg',
+  //   connection: {
+  //     connectionString: "postgres://hkbrbdmoikszbt:8bd77b6fb428ee84429bc90a9813779322900d0230c638960bb75050895631f5@ec2-34-193-110-25.compute-1.amazonaws.com:5432/davlaum7uh7apf",
+  //     ssl: {
+  //       rejectUnauthorized: false
+  //     }
+  //   }
+  // });
 
 
 const app = express();
