@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 
-const PASSWORD = process.env.MAILMDP;
+const PASSWORD = process.env.EMAILMDP;
 
 let transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
@@ -8,7 +8,7 @@ let transporter = nodemailer.createTransport({
   secure: false, // true for 465, false for other ports
   auth: {
     user: 'flucariodu62@hotmail.fr',
-    pass: PASSWORD
+    pass: "dofuspowa62300xD!"
   }
 });
 
