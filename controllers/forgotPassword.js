@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 
+const PASSWORD = process.env.MAILMDP;
 
 let transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
@@ -7,7 +8,7 @@ let transporter = nodemailer.createTransport({
   secure: false, // true for 465, false for other ports
   auth: {
     user: 'flucariodu62@hotmail.fr',
-    pass: process.env.MAILMDP
+    pass: PASSWORD
   }
 });
 
@@ -33,7 +34,6 @@ export const checkExistingEmail = (req, res, db) => {
                   text: 'Click below to reset your password:',
                   html: `<a href="${resetPasswordLink}">Reset password</a>`
                 };
-
                 // send e-mail
                 transporter.sendMail(mailOptions, (error, info) => {
                   if (error) {
