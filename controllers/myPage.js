@@ -1,4 +1,5 @@
-// Function that takes the id and new_name from the request body, changes the existing name to the new name in the database, and returns the updated user object to our App
+// Function that takes the id and new_name from the request body, changes the existing
+// name to the new name in the database, and returns the updated user object to our App
 export const changeName = (req, res, db) => {
     const { id, new_name } = req.body;
   db('users')

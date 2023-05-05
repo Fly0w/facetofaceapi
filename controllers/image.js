@@ -64,7 +64,7 @@ const imageLastUrl = (req, res, db) => {
     .select('last_url')
     .then(url => {
       if (!url) {
-        return res.status(404).send('Url not found');
+        return res.status(404).send('Url not found'); // For new users, existing url is empty
       }
       db('users')
         .where({id})
@@ -75,12 +75,12 @@ const imageLastUrl = (req, res, db) => {
         })
         .catch(error => {
           console.error(error);
-          res.status(500).send('error 1 while processing url');
+          res.status(400).send('error 1 while processing url');
         });
     })
     .catch(error => {
       console.error(error);
-      res.status(500).send('error  while processing url');
+      res.status(400).send('error  while processing url');
     });
 };
 
