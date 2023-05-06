@@ -1,15 +1,13 @@
 import nodemailer from 'nodemailer';
 
+const EMAIL = process.env.EMAILMAIL;
 const PASSWORD = process.env.EMAILMDP;
-const EMAIL = process.env.EMAILMDP;
 
 let transporter = nodemailer.createTransport({
   host: 'smtp.office365.com',
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    // user: EMAIL,
-    // pass: PASSWORD
     user: EMAIL,
     pass: PASSWORD
   }
@@ -27,7 +25,7 @@ export const checkExistingEmail = (req, res, db) => {
                 res.json("User Exists");
                 /////////////// SEND EMAIL HERE////////////////////
                 const token = 'abc123';
-                const resetPasswordLink = `https://fly0w.github.io/facetoface/reset-password/email=${email}/token=${token}`;
+                const resetPasswordLink = `https://https://fly0w.github.io/facetoface/reset-password/email=${email}/token=${token}`;
 
                 // email Body
                 let mailOptions = {

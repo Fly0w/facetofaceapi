@@ -1,3 +1,20 @@
+// Function that takes the user ID in the body of the request, finds the user in the db 
+// and increments by 1 his/her number or entries
+const imageHandler = (req, res, db) => {
+  const { id } = req.body;
+  db('users')
+      .where('id', '=', id)
+      .increment('entries', 1)
+      .returning('entries')
+      .then(user => {
+          return res.json(user[0].entries)
+      })
+      .catch(err => {
+          res.status(400).json('error while processing entries')
+      })
+};
+
+
 // Function that takes care of sending a request to the Clarifai API with our credentials
 // and returns the object to our app
 const imageurlHandler = (req, res) => {
@@ -38,21 +55,6 @@ const imageurlHandler = (req, res) => {
 }
 
 
-// Function that takes the user ID in the body of the request, finds the user in the db 
-// and increments by 1 his/her number or entries
-const imageHandler = (req, res, db) => {
-    const { id } = req.body;
-    db('users')
-        .where('id', '=', id)
-        .increment('entries', 1)
-        .returning('entries')
-        .then(user => {
-            return res.json(user[0].entries)
-        })
-        .catch(err => {
-            res.status(400).json('error while processing entries')
-        })
-};
 
 
 // Function that takes the id and last_url from the request body, updates the last loaded 
