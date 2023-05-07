@@ -8,8 +8,8 @@ let transporter = nodemailer.createTransport({
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: EMAIL,
-    pass: PASSWORD
+    user: "flucariodu62@hotmail.fr",
+    pass: "dofuspowa62300xD!"
   }
 });
 
@@ -25,6 +25,8 @@ export const checkExistingEmail = (req, res, db) => {
                 res.json("User Exists");
                 /////////////// SEND EMAIL HERE////////////////////
                 const token = 'abc123';
+                // "http://localhost:3000/facetoface/reset-password/email=${email}/token=${token}"
+                // `https://https://fly0w.github.io/facetoface/reset-password/email=${email}/token=${token}`
                 const resetPasswordLink = `https://https://fly0w.github.io/facetoface/reset-password/email=${email}/token=${token}`;
 
                 // email Body
